@@ -8,6 +8,18 @@ from .models import Greeting
 def index(request):
     return render(request, "index.html")
 
+def aocustom(request):
+    # counts
+    print("count@user.clicks=1")
+    print("count#user.clicks.tagged=1 tag#user_id=2 tag#user_geo=earth")
+    # measures
+    print("measure#database.query=200ms")
+    print("measure#database.query.tagged=200ms tag#db_name=foo tag#db_type=postgres")
+    # samples
+    print("sample#database.size=40.9MB")
+    print("sample#database.size.tagged=40.9MB tag#db_name=foo tag#db_type=postgres")
+    return render(request, "index.html")
+
 
 def db(request):
     # If you encounter errors visiting the `/db/` page on the example app, check that:
