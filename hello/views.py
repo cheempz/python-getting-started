@@ -10,7 +10,7 @@ def index(request):
 
 def aocustom(request):
     # counts
-    print("count@user.clicks=1")
+    print("count#user.clicks=1")
     print("count#user.clicks.tagged=1 tag#user_id=2 tag#user_geo=earth")
     # measures
     print("measure#database.query=200ms")
