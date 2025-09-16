@@ -12,12 +12,15 @@ def aocustom(request):
     # counts
     print("count#user.clicks=1")
     print("count#user.clicks.tagged=1 tag#user_id=2 tag#user_geo=earth")
+    print("source=us-west count#user.clicks.sourced=1")
     # measures
     print("measure#database.query=200ms")
     print("measure#database.query.tagged=200ms tag#db_name=foo tag#db_type=postgres")
+    print("source=us-east measure#database.query.sourced=200ms")
     # samples
     print("sample#database.size=40.9MB")
     print("sample#database.size.tagged=40.9MB tag#db_name=foo tag#db_type=postgres")
+    print("source=another-source sample#database.size.sourced=40.9MB")
     return render(request, "index.html")
 
 
