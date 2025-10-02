@@ -1,3 +1,6 @@
+import random
+import time
+
 from django.shortcuts import render
 
 from .models import Greeting
@@ -8,7 +11,7 @@ from .models import Greeting
 def index(request):
     return render(request, "index.html")
 
-def aocustom(request):
+def ao_custom(request):
     # counts
     print("count#user.clicks=1")
     print("count#user.clicks.tagged=1 tag#user_id=2 tag#user_geo=earth")
@@ -41,3 +44,13 @@ def db(request):
     greetings = Greeting.objects.all()
 
     return render(request, "db.html", {"greetings": greetings})
+
+def random_sleep(request):
+    # sleep for query parameter `sleepMs` milliseconds, or a random time between 0 and 3s if not specified
+    try:
+        sleep_s = int(request.GET["sleepMs"]) / 1000
+    except (NameError, ValueError):
+        sleep_s = random.uniform(0, 3.0)
+    print(f"sleeping {sleep_s}s")
+    time.sleep(sleep_s)
+    return render(request, "index.html")
