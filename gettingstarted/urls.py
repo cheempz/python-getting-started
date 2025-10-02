@@ -24,7 +24,9 @@ urlpatterns = [
     path("", hello.views.index, name="index"),
     path("db/", hello.views.db, name="db"),
     path("ao-custom/", hello.views.ao_custom, name="ao_custom"),
-    path("random-sleep/", hello.views.random_sleep, name="random_sleep"),
+    path("sleep/", hello.views.sleep, name="sleep"),
+    path("status/", hello.views.status, name="status"),
+    path("resource/", hello.views.resource, name="resource"),
     # Uncomment this and the entry in `INSTALLED_APPS` if you wish to use the Django admin feature:
     # https://docs.djangoproject.com/en/5.2/ref/contrib/admin/
     # path("admin/", admin.site.urls),
