@@ -70,7 +70,7 @@ if os.environ.get("ENVIRONMENT") == "development":
 else:
     # Load the app before the worker processes are forked, to reduce memory usage and boot times.
     # We don't enable this in development, since it's incompatible with `reload = True`.
-    preload_app = True
+    preload_app = False #True
 
     # Use `SO_REUSEPORT` on the listening socket, which allows for more even request
     # distribution between workers. See: https://lwn.net/Articles/542629/

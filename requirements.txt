@@ -5,3 +5,6 @@ whitenoise>=6,<7
 
 # Uncomment to use a Postgres database.
 psycopg[binary]
+
+# for instrumentation
+solarwinds-apm
