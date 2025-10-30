@@ -98,3 +98,29 @@ def resource(request):
         thread.join()
 
     return HttpResponse(str(info), content_type="text/plain")
+
+def logs(request):
+    # log a burst of messages based on query parameters `count` and `threads`,
+    # or 1024 messages each from 16 threads if not specified.
+    try:
+        msg_count = int(request.GET["count"])
+    except (KeyError, ValueError):
+        msg_count = 1024
+    try:
+        threads_count = int(request.GET["threads"])
+    except (KeyError, ValueError):
+        threads_count = 16
+
+    def log_burst(tid, count):
+        for i in range(count):
+            print(f"log burst tid: {tid} message: {i}")
+
+    threads = []
+    for i in range(threads_count):
+        thread = threading.Thread(target=log_burst, args=(i, msg_count,))
+        threads.append(thread)
+        thread.start()
+    for thread in threads:
+        thread.join()
+
+    return HttpResponse(f"{threads_count} threads each logged {msg_count} messages", content_type="text/plain")
